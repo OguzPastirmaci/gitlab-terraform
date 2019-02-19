@@ -12,7 +12,6 @@ before_script:
 stages:
   - validate
   - plan
-  - apply
 
 validate:
   stage: validate
@@ -28,11 +27,3 @@ plan:
   artifacts:
     paths:
       - planfile
-
-apply:
-  stage: apply
-  script:
-    - terraform apply -input=false "planfile"
-  dependencies:
-    - plan
-  when: manual
